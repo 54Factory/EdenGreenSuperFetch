@@ -9,8 +9,9 @@ const prodConfig = {
     authDomain: "superfetch-d20fc.firebaseapp.com",
     databaseURL: "https://superfetch-d20fc.firebaseio.com",
     projectId: "superfetch-d20fc",
-    storageBucket: "",
+    storageBucket: "superfetch-d20fc.appspot.com",
     messagingSenderId: "491803962950"
+ 
 };
 
 const devConfig = {
@@ -18,8 +19,9 @@ const devConfig = {
     authDomain: "superfetch-d20fc.firebaseapp.com",
     databaseURL: "https://superfetch-d20fc.firebaseio.com",
     projectId: "superfetch-d20fc",
-    storageBucket: "",
+    storageBucket: "superfetch-d20fc.appspot.com",
     messagingSenderId: "491803962950"
+ 
 };
 
 const config = process.env.NODE_ENV === 'production'
