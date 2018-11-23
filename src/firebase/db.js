@@ -16,17 +16,19 @@ user.updateProfile({
   photoURL: "https://randomuser.me/api/portraits/men/20.jpg"
 })
 }
-export const doCreateFirestoreUser = (id, firstName, lastName, username, email) => {
-firestore.collection("users")
-  .add({
+export const doCreateFirestoreUser = (authUser, firstName, lastName, username, email) => {
+ 
+firestore.collection('users').doc(`${authUser.user.uid}`)
+  .set({
     firstName, lastName, username, email
 })
-.then(function(docRef) {
-    console.log("Document written with ID: ", docRef.id);
+.then(function() {
+    console.log("Document written with ID: ", );
 })
 .catch(function(error) {
     console.error("Error adding document: ", error);
 });
+
  
 }
 
