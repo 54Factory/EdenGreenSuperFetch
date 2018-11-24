@@ -4,8 +4,8 @@ import {
   withRouter,
 } from 'react-router-dom';
 
-import { auth, db } from '../../firebase';
-import * as routes from '../../constants/routes';
+import { auth, db } from '../../../firebase';
+import * as routes from '../../../constants/routes';
 import { Form } from 'semantic-ui-react'
 
 const options = [
@@ -34,7 +34,7 @@ const INITIAL_STATE = {
   passwordTwo: '',
   error: null,
 };
-
+ 
 class SignUpForm extends Component {
   constructor(props) {
     super(props);

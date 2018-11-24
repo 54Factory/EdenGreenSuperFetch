@@ -6,12 +6,12 @@ import {
 
 import Navigation from '../Navigation';
 import LandingPage from '../Landing';
-import SignUpPage from '../SignUp';
-import SignInPage from '../SignIn';
-import PasswordForgetPage from '../PasswordForget';
+import SignUpPage from '../Auth/SignUp';
+import SignInPage from '../Auth/SignIn';
+import PasswordForgetPage from '../Auth/PasswordForget';
 import HomePage from '../Home';
 import AccountPage from '../Account';
-import withAuthentication from '../Session/withAuthentication';
+import withAuthentication from '../Auth/Session/withAuthentication';
 import * as routes from '../../constants/routes';
 
 import './index.css';

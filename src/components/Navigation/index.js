@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import SignOutButton from '../SignOut';
+import SignOutButton from '../Auth/SignOut';
 import * as routes from '../../constants/routes';
 
 const Navigation = ({ authUser }) =>
