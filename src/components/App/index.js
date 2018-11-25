@@ -10,6 +10,8 @@ import HomePage from '../Home';
 import AccountPage from '../Account';
 import withAuthentication from '../Auth/Session/withAuthentication';
 import Customers from '../Customers';
+import CreateCustomer from '../Create';
+
 import * as routes from '../../constants/routes';
 
 import './index.css';
@@ -27,6 +29,7 @@ const App = () =>
       <Route exact path={routes.HOME} component={() => <HomePage />} />
       <Route exact path={routes.ACCOUNT} component={() => <AccountPage />} />
       <Route exact path={routes.CUSTOMERS} component={() => <Customers />} />
+      <Route exact path={routes.CREATE} component={() => <CreateCustomer />} />
       <hr/>
     </div>
   </Router>
