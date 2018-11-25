@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 import { reduxFirestore, getFirestore } from 'redux-firestore';
 import thunk from 'redux-thunk';
-import rootReducer from '../reducers';
+import rootReducer from '../redux/reducers';
 import firebase from '../firebase/firebase';
 const rrfConfig = {
   userProfile: 'users',
