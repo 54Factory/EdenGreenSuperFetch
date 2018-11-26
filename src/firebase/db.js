@@ -1,3 +1,4 @@
+import { toastr } from 'react-redux-toastr';
 import { db, firestore } from './firebase';
 
 // User API
@@ -25,10 +26,12 @@ firestore.collection('users').doc(`${authUser.user.uid}`)
     firstName, lastName, username, email, role
 })
 .then(function() {
+  toastr.success('Success', 'User has been created');
     console.log("Document written with ID: ", authUser.user.uid );
 })
 .catch(function(error) {
     console.error("Error adding document: ", error);
+    toastr.error('Success', 'Event has been created');
 });
 }
 
