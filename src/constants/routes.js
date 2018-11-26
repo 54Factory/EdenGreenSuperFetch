@@ -6,3 +6,4 @@ export const HOME = '/home';
 export const ACCOUNT = '/account';
 export const CUSTOMERS = '/customers';
 export const CREATE = '/create';
+export const  PLAYGROUND = '/playground';

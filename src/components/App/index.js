@@ -11,6 +11,7 @@ import AccountPage from '../Account';
 import withAuthentication from '../Auth/Session/withAuthentication';
 import Customers from '../Customers';
 import CreateCustomer from '../Create';
+import Playground from '../Playground';
 
 import * as routes from '../../constants/routes';
 
@@ -30,6 +31,7 @@ const App = () =>
       <Route exact path={routes.ACCOUNT} component={() => <AccountPage />} />
       <Route exact path={routes.CUSTOMERS} component={() => <Customers />} />
       <Route exact path={routes.CREATE} component={() => <CreateCustomer />} />
+      <Route exact path={routes.PLAYGROUND} component={() => <Playground />} />
       <hr/>
     </div>
   </Router>

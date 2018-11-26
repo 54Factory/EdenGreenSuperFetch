@@ -44,7 +44,8 @@ export const createCustomer = (firstName, lastName, phone, email) => {
     firstName,
     lastName,
     phone,
-    email
+    email,
+    created: Date.now()
   })
   .then(res => {
     db.ref(`customers/${res.id}`).set({
