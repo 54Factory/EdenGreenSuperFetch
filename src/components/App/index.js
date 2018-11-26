@@ -12,7 +12,7 @@ import withAuthentication from '../Auth/Session/withAuthentication';
 import Customers from '../Customers';
 import CreateCustomer from '../Create';
 import Playground from '../Playground';
-
+import Dashboard from '../Dashboard';
 import * as routes from '../../constants/routes';
 import ScrollToTop from '../../helpers/ScrollToTop';
 import { Container } from 'semantic-ui-react';
@@ -37,6 +37,7 @@ const App = () =>
             <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
             <Route exact path={routes.PASSWORD_FORGET} component={() => <PasswordForgetPage />} />
             <Route exact path={routes.HOME} component={() => <HomePage />} />
+            <Route exact path={routes.DASHBOARD} component={() => <Dashboard />} />
             <Route exact path={routes.ACCOUNT} component={() => <AccountPage />} />
             <Route exact path={routes.CUSTOMERS} component={() => <Customers />} />
             <Route exact path={routes.CREATE} component={() => <CreateCustomer />} />

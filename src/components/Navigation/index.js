@@ -16,10 +16,11 @@ const Navigation = ({ authUser }) =>
   </Menu.Item>
   <Menu.Item as={Link} to="/home" name="Home" />
   {authUser &&
-  <Menu.Item as={Link} to="/customers" name="Customers" />}
+  //<Menu.Item as={Link} to="/customers" name="Customers" />}
+  <Menu.Item as={Link} to="/dashboard" name="Dashboard" />}
 
   {authUser ? (
-    <SignedInMenu routes={routes} />
+    <SignedInMenu routes={routes} profile={authUser} />
   ) : (
     <SignedOutMenu />
   )}

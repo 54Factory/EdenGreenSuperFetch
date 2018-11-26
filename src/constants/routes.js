@@ -3,6 +3,7 @@ export const SIGN_UP = '/signup';
 export const SIGN_IN = '/signin';
 export const PASSWORD_FORGET = '/pw-forget';
 export const HOME = '/home';
+export const DASHBOARD = '/dashboard';
 export const ACCOUNT = '/account';
 export const CUSTOMERS = '/customers';
 export const CREATE = '/create';
