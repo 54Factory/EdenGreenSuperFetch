@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { Form } from 'semantic-ui-react'
 
 
@@ -32,19 +31,11 @@ class CustomerForm extends Component {
         />
         <Form.Input 
           fluid 
-          label='Email' 
-          placeholder='Email'
+          label='Username' 
+          placeholder='Username'
           onChange={this.onFieldChange.bind(this)}
           type="text"
-          name="email" 
-        />
-        <Form.Input 
-          fluid 
-          label='Phone' 
-          placeholder='Phone'
-          onChange={this.onFieldChange.bind(this)}
-          type="text"
-          name="phone" 
+          name="displayName" 
         />
       </Form.Group>
     );

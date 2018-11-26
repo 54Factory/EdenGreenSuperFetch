@@ -6,7 +6,7 @@ import { firestoreReducer } from 'redux-firestore'
 import sessionReducer from './session';
 import userReducer from './user';
 import asyncReducer from './async';
-import expenseReducer from '../../components/Playground/expenseReducer'
+import createReducer from './create'
 
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
@@ -14,9 +14,9 @@ const rootReducer = combineReducers({
   sessionState: sessionReducer,
   userState: userReducer,
   asyncState: asyncReducer,
+  create: createReducer,
   form: FormReducer,
   toastr: toastrReducer,
-  expenseState: expenseReducer
 });
 
 export default rootReducer;

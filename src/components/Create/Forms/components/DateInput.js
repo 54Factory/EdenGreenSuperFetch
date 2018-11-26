@@ -20,3 +20,4 @@ const DateInput = ({input: {value, onChange, ...restInput}, width, placeholder, 
 }
 
 export default DateInput
+ 

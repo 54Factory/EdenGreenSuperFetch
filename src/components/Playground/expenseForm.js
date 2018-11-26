@@ -7,8 +7,7 @@ import { combineValidators,
   isRequired,
 } from 'revalidate';
 import { createExpense } from './expenseActions';
-import TextInput from '../Forms/TextInput';
-
+import TextInput from '../Create/Forms/components/TextInput'
 
 const mapState = (state, ownProps) => {
   let expense = {};
