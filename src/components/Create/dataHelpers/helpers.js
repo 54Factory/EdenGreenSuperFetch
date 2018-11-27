@@ -19,7 +19,8 @@ export const createDataTree = dataset => {
 // DATABASE - MODELLING SHAPE OF DATA
 // CREATE NEW CUSTOMER
 
-export const createNewLocation = (ownedById, photoURL, location) => {
+export const createNewLocation = (ownedById, location, photoURL) => {
+  console.log(location);
 
   return {
     ...location,
@@ -28,7 +29,7 @@ export const createNewLocation = (ownedById, photoURL, location) => {
     dateCreated: Date.now(),
     ownedBy: {
       [ownedById]: {
-        displayName: location.displayName,
+        displayName: `${location.firstName} ${location.lastName}`,
         photoURL: photoURL || 'assets/userPhoto.jpg'
       }
     }

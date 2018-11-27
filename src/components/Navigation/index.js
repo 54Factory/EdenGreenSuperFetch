@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Menu, Container } from 'semantic-ui-react';
+import { Menu, Container, Dropdown } from 'semantic-ui-react';
 import SignedInMenu from './SignedInMenu'
 //import SignOutButton from '../Auth/SignOut';
 import * as routes from '../../constants/routes';
@@ -18,7 +18,17 @@ const Navigation = ({ authUser }) =>
   {authUser &&
   //<Menu.Item as={Link} to="/customers" name="Customers" />}
   <Menu.Item as={Link} to="/dashboard" name="Dashboard" />}
-
+    <Menu.Item position="left">
+      <Dropdown pointing="top left" text='Create'>
+        <Dropdown.Menu>
+          <Dropdown.Item as={Link} to={routes.CREATE} text="Create New Account" icon="plus" />
+          <Dropdown.Item text="Create New User" icon="user" />
+          <Dropdown.Item text="Create New Location" icon="map marker" />
+          <Dropdown.Item text="Create New Service" icon="wrench" />
+          <Dropdown.Item text="Settings" icon="settings" />
+        </Dropdown.Menu>
+      </Dropdown>
+    </Menu.Item> 
   {authUser ? (
     <SignedInMenu routes={routes} profile={authUser} />
   ) : (
