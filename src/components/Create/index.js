@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
+//import SearchBar from './Forms/LocationSearchBar';
 import NewAccountForm from './Forms/NewAccountForm';
 
 
 class Create extends Component {
 
   render() {
-    console.log(this.state);
     return (
       <div>
-        <h1>Create New Account Form</h1>
+        <h1>Create New Account</h1>
         <NewAccountForm />
       </div>
     )

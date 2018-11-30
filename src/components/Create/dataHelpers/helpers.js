@@ -21,7 +21,6 @@ export const createDataTree = dataset => {
 
 export const createNewLocation = (ownedById, location, photoURL) => {
   console.log(location);
-
   return {
     ...location,
     ownershipProfileId: ownedById,

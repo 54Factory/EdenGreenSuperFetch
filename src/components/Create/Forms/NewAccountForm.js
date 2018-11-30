@@ -1,9 +1,7 @@
-/*global google*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { withFirestore } from 'react-redux-firebase';
-import Script from 'react-load-script';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { Segment, Form, Button, Grid, Header } from 'semantic-ui-react';
 import {
@@ -13,6 +11,7 @@ import {
 import TextInput from './components/TextInput';
 import PlaceInput from './components/PlaceInput';
 import { createNewAccount } from '../../../redux/actions/create'
+import PlacesSingleMarkerMapComponent from '../../Maps/SingleMarkerMap';
 
 const mapState = (state, ownProps) => {
   let location = {};
@@ -28,87 +27,132 @@ const actions = {
 };
 
 const validate = combineValidators({
-  //displayName: isRequired('displayName'),
   firstName: isRequired('firstName'),
   lastName: isRequired('lastName'),
   locationName: isRequired('locationName'),
-  city: isRequired('city'),
-  venue: isRequired('venue'),
+  address: isRequired('address'),
 });
 
 class NewAccountForm extends Component {
   state = {
-    cityLatLng: {},
-    venueLatLng: {},
-    scriptLoaded: false
+    locationLatLng: {},
+    geocodeResults: null,
+    loading: false
   };
 
   handleScriptLoaded = () => this.setState({ scriptLoaded: true });
 
-  handleCitySelect = selectedCity => {
-    geocodeByAddress(selectedCity)
+  handlePlaceSelect = selectedPlace => {
+    geocodeByAddress(selectedPlace)
       .then(results => getLatLng(results[0]))
       .then(latlng => {
         this.setState({
-          cityLatLng: latlng
+          locationLatLng: latlng,
+          geocodeResults: this.renderGeocodeSuccess(latlng.lat, latlng.lng),
         });
       })
+    geocodeByAddress(selectedPlace)
+      .then(results => {
+        let address = results[0].formatted_address
+        this.props.change('address', address);
+      })
       .then(() => {
-        this.props.change('city', selectedCity);
-      });
-  };
-
-  handleVenueSelect = selectedVenue => {
-    geocodeByAddress(selectedVenue)
-      .then(results => getLatLng(results[0]))
-      .then(latlng => {
+        this.props.change('locationName', selectedPlace.split(',')[0]);
+        //this.props.change('city', address);
+      })
+      .catch(error => {
+        console.log('Geocode Error', error)
         this.setState({
-          venueLatLng: latlng
-        });
+          geocodeResults: this.renderGeocodeFailure(error),
+          loading: false,
+        })
       })
-      .then(() => {
-        this.props.change('venue', selectedVenue);
-      });
   };
-
-
+  
   onFormSubmit = values => {
-    values.venueLatLng = this.state.venueLatLng;
+    values.locationLatLng = this.state.locationLatLng;
     if (this.props.initialValues.id) {
-      if (Object.keys(values.venueLatLng).length === 0) {
-        values.venueLatLng = this.props.location.venueLatLng
+      if (Object.keys(values.locationLatLng).length === 0) {
+        values.locationLatLng = this.props.location.locationLatLng
       }
         console.log('Problem');
         
     } else {
       this.props.createNewAccount(values);
-      console.log('Submitted');
-      
+      console.log('Submitted'); 
       // this.props.history.push('/');
     }
   };
+  renderGeocodeFailure(error) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        <strong>Error!</strong> {error}
+      </div>
+    )
+  }
+
+  renderGeocodeSuccess(lat, lng) {
+    const markers = {
+      lat,
+      lng
+    }
+    return (
+      <div>
+      <div className="alert alert-success" role="alert">
+        <strong>Success!</strong> Geocoder found latitude and longitude, continue with creating account.{' '}
+        <PlacesSingleMarkerMapComponent 
+          markers={markers}
+        />
+        <strong>
+          {lat}, {lng}
+        </strong>
+
+      </div>   
+      <div>
+        </div>     
+      </div>
+
+    )
+  }
 
   render() {
     const { invalid, submitting, pristine, loading } = this.props;
-    console.log(this.props);
+    console.log(this.state);
     
     return (
       <Grid>
-        <Script
+        {/* <Script
           url="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZWvcf7KHmOWX5EfFqZWkhl9pJw2GtiKk&libraries=places"
           onLoad={this.handleScriptLoaded}
-        />
+        /> */}
         <Grid.Column width={10}>
-          <Segment>
-            <Header sub color="teal" content="Ownership Details" />
+          <Segment>   
             <Form onSubmit={this.props.handleSubmit(this.onFormSubmit)}>
-              {/* <Field
-                name="displayName"
+              <Header sub color="grey" content="Location details" />
+              <Field
+                name="locationName"
+                type="text"
+                component={PlaceInput}
+                placeholder="Find a location"
+                onSelect={this.handlePlaceSelect}
+              />
+        {this.state.loading && (
+          <div>
+            <i className="fa fa-spinner fa-pulse fa-3x fa-fw Demo__spinner" />
+          </div>
+        )}
+        {this.state.geocodeResults && (
+          <div>
+            <div className="geocoding-results">{this.state.geocodeResults}</div>
+            <Header sub color="grey" content="Address Details" />
+            <Field
+                name="address"
                 type="text"
                 component={TextInput}
-                placeholder="Username"
-              /> */}
-              <Field
+                placeholder="Location Address"
+              /> 
+            <Header sub color="grey" content="Ownership Details" />
+             <Field
                 name="firstName"
                 type="text"
                 component={TextInput}
@@ -120,35 +164,6 @@ class NewAccountForm extends Component {
                 component={TextInput}
                 placeholder="Last Name"
               />
-              <Header sub color="teal" content="Location details" />
-              <Field
-                name="locationName"
-                type="text"
-                component={TextInput}
-                placeholder="Location Name"
-              />      
-              <Field
-                name="city"
-                type="text"
-                component={PlaceInput}
-                options={{ types: ['(cities)'] }}
-                placeholder="Event city"
-                onSelect={this.handleCitySelect}
-              />
-              {this.state.scriptLoaded && (
-                <Field
-                  name="venue"
-                  type="text"
-                  component={PlaceInput}
-                  options={{
-                    location: new google.maps.LatLng(this.state.cityLatLng),
-                    radius: 1000,
-                    types: ['establishment']
-                  }}
-                  placeholder="Event venue"
-                  onSelect={this.handleVenueSelect}
-                />
-              )}
               <Button
                 loading={loading}
                 disabled={invalid || submitting || pristine}
@@ -157,9 +172,9 @@ class NewAccountForm extends Component {
               >
                 Submit
               </Button>
-              {/* <Button disabled={loading} onClick={this.props.history} type="button">
+              <Button disabled={loading} type="button">
                 Cancel
-              </Button> */}
+              </Button>
               {/* {event.id &&
               <Button
 
@@ -169,6 +184,10 @@ class NewAccountForm extends Component {
                 floated='right'
                 content={event.cancelled ? 'Reactivate Event' : 'Cancel Event'}
               />} */}
+          </div>
+          
+        )}
+
             </Form>
           </Segment>
         </Grid.Column>

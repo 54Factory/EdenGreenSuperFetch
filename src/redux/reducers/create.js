@@ -19,7 +19,7 @@ export const deleteLocation = (state, payload) => {
   ]
 }
 
-export const fetchLocationss = (state, payload) => {
+export const fetchLocations = (state, payload) => {
   return payload.locations
 }
 function createReducer(state = initialState, action) {
