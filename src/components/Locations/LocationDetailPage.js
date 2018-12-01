@@ -3,7 +3,11 @@ import { Grid } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { withFirestore } from 'react-redux-firebase';
 import { toastr } from 'react-redux-toastr'
-import LoadingComponent from '../../../../helpers/LoadingComponent'
+import LoadingComponent from '../../helpers/LoadingComponent'
+import LocationDetailHeader from './LocationDetailHeader';
+import LocationDetailInfo from './LocationDetailInfo';
+import LocationDetailChat from './LocationChat';
+import LocationDetailSidebar from './LocationDetailSidebar';
 // import EventDetailedHeader from './EventDetailedHeader';
 // import EventDetailedInfo from './EventDetailedInfo';
 // import EventDetailedChat from './EventDetailedChat';
@@ -31,7 +35,7 @@ const mapState = (state, ownProps) => {
     // auth: state.firebase.auth
   };
 };
-
+ 
 // const actions = {
 //   goingToEvent,
 //   cancelGoingToEvent
@@ -73,9 +77,15 @@ class LocationDetailPage extends Component {
     return (
       <Grid>
         <Grid.Column width={10}>
-          <div><h1>locationId: {`${location.id}`}</h1></div>
-          <div><h1>locationId: {`${location.locationName}`}</h1></div>
+        <LocationDetailHeader location={location} />
+        <LocationDetailInfo location={location} />
+        <LocationDetailChat />
+          {/* <div><h1>locationId: {`${location.id}`}</h1></div>
+          <div><h1>locationId: {`${location.locationName}`}</h1></div> */}
         </Grid.Column>
+        <Grid.Column width={6}>
+        <LocationDetailSidebar />
+      </Grid.Column>
       </Grid>
     );
   }

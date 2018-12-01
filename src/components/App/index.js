@@ -11,7 +11,7 @@ import Customers from '../Customers';
 import CreateCustomer from '../Create';
 import Playground from '../Playground';
 import Dashboard from '../Dashboard';
-import LocationDetailPage from '../Dashboard/Locations/LocationDetail/LocationDetailPage';
+import LocationDetailPage from '../Locations/LocationDetailPage';
 //import withAuthentication from '../Auth/Session/withAuthentication';
 
 import { Container } from 'semantic-ui-react';
