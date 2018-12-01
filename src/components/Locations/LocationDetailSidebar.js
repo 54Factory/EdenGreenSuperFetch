@@ -28,7 +28,7 @@ const LocationDetailSidebar = () => {
                 </Label>}
                 {/* <Item.Image size="tiny" src={attendee.photoURL}/> */}
                 <Item.Content verticalAlign="middle">
-                  <Item.Header as="h3">
+                  <Item.Header>
                     <h1>Last Pickup data link?</h1>
                     {/* <a>{attendee.name}</a> */}
                   </Item.Header>
