@@ -7,14 +7,16 @@ import sessionReducer from './session';
 import userReducer from './user';
 import asyncReducer from './async';
 import createReducer from './create'
+import locationsReducer from './locations'
 
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
   firestore: firestoreReducer,
   sessionState: sessionReducer,
   userState: userReducer,
-  asyncState: asyncReducer,
+  async: asyncReducer,
   create: createReducer,
+  locations: locationsReducer,
   form: FormReducer,
   toastr: toastrReducer,
 });

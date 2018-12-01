@@ -19,6 +19,7 @@ const mapState = (state, ownProps) => {
   return {
     initialValues: location,
     location,
+    ownProps
   };
 };
 
@@ -80,7 +81,7 @@ class NewAccountForm extends Component {
     } else {
       this.props.createNewAccount(values);
       console.log('Submitted'); 
-      // this.props.history.push('/');
+      this.props.history.push('/dashboard');
     }
   };
   renderGeocodeFailure(error) {
@@ -117,7 +118,7 @@ class NewAccountForm extends Component {
 
   render() {
     const { invalid, submitting, pristine, loading } = this.props;
-    console.log(this.state);
+    console.log(this.props);
     
     return (
       <Grid>

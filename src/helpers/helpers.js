@@ -20,22 +20,22 @@ export const createDataTree = dataset => {
 // DATABASE - MODELLING SHAPE OF DATA
 // CREATE NEW CUSTOMER
 
-// export const createNewLocation = (ownedById, photoURL, location) => {
+export const createNewLocation = (ownedById, photoURL, location) => {
 
-//   return {
-//     ...location,
-//     ownershipProfileId: ownedById,
-//     locationPhotoURL: "assets/pizza_pyramids_1250235.jpg",
-//     hostPhotoURL: photoURL || '/assets/user.png',
-//     created: Date.now(),
-//     ownedBy: {
-//       [ownedById]: {
-//         displayName: "Seth Mantooth",
-//         photoURL: photoURL || 'assets/userPhoto.jpg'
-//       }
-//     }
-//   }
-// }
+  return {
+    ...location,
+    ownershipProfileId: ownedById,
+    locationPhotoURL: "assets/pizza_pyramids_1250235.jpg",
+    hostPhotoURL: photoURL || '/assets/user.png',
+    created: Date.now(),
+    ownedBy: {
+      [ownedById]: {
+        displayName: "Seth Mantooth",
+        photoURL: photoURL || 'assets/userPhoto.jpg'
+      }
+    }
+  }
+}
 
 export const createNewAccount = location => {
   return async (dispatch, getState, { getFirestore }) => {

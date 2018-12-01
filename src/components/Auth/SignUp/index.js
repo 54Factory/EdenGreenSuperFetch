@@ -71,7 +71,7 @@ class SignUpForm extends Component {
         db.doCreateUser(authUser.user.uid, firstName, lastName, username, email, role)
           .then(() => {
             this.setState(() => ({ ...INITIAL_STATE }));
-            history.push(routes.HOME);
+            history.push('/home');
           })
           .catch(error => {
             this.setState(updateByPropertyName('error', error));
