@@ -1,5 +1,5 @@
 import { toastr } from 'react-redux-toastr';
-import { db, firestore, storage } from './firebase';
+import { db, firestore } from './firebase';
 
 // User API
 // Firebase - Create User

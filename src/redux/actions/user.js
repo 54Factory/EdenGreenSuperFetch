@@ -2,7 +2,9 @@
 import { toastr } from 'react-redux-toastr';
 import cuid from 'cuid';
 import { asyncActionError, asyncActionStart, asyncActionFinish } from './async'
-import { storage } from '../../firebase'
+
+
+
 export const updateProfile = user => async (
   dispatch,
   getState,
@@ -40,6 +42,8 @@ export const uploadProfileImage = (file, fileName) => async (
     // upload the file to fb storage
     
     let uploadedFile = await firebase.uploadFile(path, file, null, options);
+    console.log(file);
+    
     // get url of image
     let downloadURL = await uploadedFile.uploadTaskSnapshot.downloadURL;
     // // get the userdoc from firestore
