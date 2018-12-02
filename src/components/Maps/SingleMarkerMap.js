@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { compose, withProps } from "recompose"
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps"
@@ -33,7 +34,7 @@ const SingleMarkerMap = compose(
 )
 
 
-const PlacesSingleMarkerMapComponent = ({ markers }) => {
+const SingleMarkerMapComponent = ({ markers }) => {
   return (
     <div style={{height: `100%`}}>
     <SingleMarkerMap
@@ -51,4 +52,4 @@ const PlacesSingleMarkerMapComponent = ({ markers }) => {
   )
 }
 
-export default PlacesSingleMarkerMapComponent
+export default SingleMarkerMapComponent

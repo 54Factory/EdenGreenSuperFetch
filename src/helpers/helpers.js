@@ -1,5 +1,7 @@
 import { toastr } from 'react-redux-toastr';
 import cuid from 'cuid'
+
+
 export const objectToArray = (object) => {
   if (object) {
     return Object.entries(object).map(e => Object.assign(e[1], {id: e[0]}))
@@ -49,7 +51,7 @@ export const createNewAccount = location => {
         locationName: location.locationName,
         ownedLocationId: createdLocation.id,
       });
-      console.log('Success', 'Expense has been created');
+      console.log('Success', 'New Account has been created');
       console.log(createdLocation);
       
       toastr.success('Success', 'Event has been created');

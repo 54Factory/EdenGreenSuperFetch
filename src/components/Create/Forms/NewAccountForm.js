@@ -11,7 +11,7 @@ import {
 import TextInput from './components/TextInput';
 import PlaceInput from './components/PlaceInput';
 import { createNewAccount } from '../../../redux/actions/create'
-import PlacesSingleMarkerMapComponent from '../../Maps/SingleMarkerMap';
+import SingleMarkerMapComponent from '../../Maps/SingleMarkerMap';
 
 const mapState = (state, ownProps) => {
   let location = {};
@@ -101,7 +101,7 @@ class NewAccountForm extends Component {
       <div>
       <div className="alert alert-success" role="alert">
         <strong>Success!</strong> Geocoder found latitude and longitude, continue with creating account.{' '}
-        <PlacesSingleMarkerMapComponent 
+        <SingleMarkerMapComponent 
           markers={markers}
         />
         <strong>

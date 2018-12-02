@@ -5,7 +5,7 @@
   font-family: sans-serif;
 } */
 body {
-  background-color: rgb(234, 234, 234) !important;
+  background-color: rgb(194, 194, 194) !important;
 }
 
 /*timepicker style*/
@@ -36,7 +36,7 @@ body {
 }
 
 .masthead.segment {
-  min-height: 700px;
+  min-height: 1400px;
   padding: 1em 0 !important;
 }
 

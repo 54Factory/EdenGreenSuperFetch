@@ -1,8 +1,27 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Segment, Grid, Icon, Button } from 'semantic-ui-react';
+import LocationDetailMap from './LocationDetailMap';
 
-const LocationDetailInfo = ({location}) => {
-  return (
+class LocationDetailInfo extends Component {
+  state = {
+    showMap: false
+  }
+
+  componentWillUnmount() {
+    this.setState({
+      showMap: false
+    })
+  }
+
+  showMapToggle = () => {
+    this.setState(prevState => ({
+      showMap: !prevState.showMap
+    }))
+  }
+
+  render() {
+    const { location } = this.props;
+      return (
     <Segment.Group>
       <Segment attached="top">
         <Grid>
@@ -35,12 +54,15 @@ const LocationDetailInfo = ({location}) => {
             <span>{location.address}</span>
           </Grid.Column>
           <Grid.Column width={4}>
-            <Button color="blue" size="tiny" content="Show Map" />
-          </Grid.Column>
-        </Grid>
-      </Segment>
-    </Segment.Group>
+              <Button onClick={this.showMapToggle} color="blue" size="tiny" content={this.state.showMap ? 'Hide Map' : 'Show Map'}/>
+            </Grid.Column>
+          </Grid>
+        </Segment>
+        {this.state.showMap &&
+          <LocationDetailMap lat={location.locationLatLng.lat} lng={location.locationLatLng.lng}/>}      </Segment.Group>
   );
+  }
+
 };
 
 export default LocationDetailInfo;

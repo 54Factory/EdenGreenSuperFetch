@@ -9,7 +9,7 @@ import HomePage from '../Home';
 import AccountPage from '../Account';
 import Customers from '../Customers';
 import CreateCustomer from '../Create';
-import Playground from '../Playground';
+//import Playground from '../Playground';
 import Dashboard from '../Dashboard';
 import LocationDetailPage from '../Locations/LocationDetailPage';
 //import withAuthentication from '../Auth/Session/withAuthentication';
@@ -17,6 +17,7 @@ import LocationDetailPage from '../Locations/LocationDetailPage';
 import { Container } from 'semantic-ui-react';
 
 import './index.css';
+import PhotosPage from '../Users/PhotosPage';
 
 
 class App extends Component {
@@ -44,7 +45,7 @@ class App extends Component {
                   <Route path="/account" component={AccountPage} />
                   <Route path="/create" component={CreateCustomer} />
                   <Route path="/customers" component={Customers} />
-                  <Route path="/playground" component={Playground} />  
+                  <Route path="/profile/photos/:id" component={PhotosPage} />  
                 </Switch>
             </Container>               
             </div>

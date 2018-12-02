@@ -1,5 +1,5 @@
 import { toastr } from 'react-redux-toastr';
-import { db, firestore } from './firebase';
+import { db, firestore, storage } from './firebase';
 
 // User API
 // Firebase - Create User
@@ -12,7 +12,7 @@ export const doCreateUser = (id, firstName, lastName, username, email, role) =>
     role
   });
 // Update Auth Profile
-  export const updateFirebaseUserProfile = (authUser, id, firstName, lastName, username, email, role) => {
+export const updateFirebaseUserProfile = (authUser, id, firstName, lastName, username, email, role) => {
 let user = authUser.user;
 user.updateProfile({
   displayName: username,
