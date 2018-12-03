@@ -9,10 +9,9 @@ import HomePage from '../Home';
 import AccountPage from '../Account';
 import Customers from '../Customers';
 import CreateCustomer from '../Create';
-//import Playground from '../Playground';
+import UsersPage from '../Users'
 import Dashboard from '../Dashboard';
 import LocationDetailPage from '../Locations/LocationDetailPage';
-//import withAuthentication from '../Auth/Session/withAuthentication';
 
 import { Container } from 'semantic-ui-react';
 
@@ -41,6 +40,7 @@ class App extends Component {
                   <Route path="/pw-forget" component={PasswordForgetPage} />
                   <Route path="/dashboard" component={Dashboard} />
                   <Route path="/home" component={HomePage} />
+                  <Route path="/users" component={UsersPage} />
                   <Route path="/locations/:id" component={LocationDetailPage} />
                   <Route path="/account" component={AccountPage} />
                   <Route path="/create" component={CreateCustomer} />

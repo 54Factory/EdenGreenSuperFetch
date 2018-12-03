@@ -8,6 +8,7 @@ import LocationDetailHeader from './LocationDetailHeader';
 import LocationDetailInfo from './LocationDetailInfo';
 import LocationDetailChat from './LocationChat';
 import LocationDetailSidebar from './LocationDetailSidebar';
+import LocationsPhotoPage from './Settings/PhotosPage'
 // import EventDetailedHeader from './EventDetailedHeader';
 // import EventDetailedInfo from './EventDetailedInfo';
 // import EventDetailedChat from './EventDetailedChat';
@@ -80,6 +81,7 @@ class LocationDetailPage extends Component {
         <LocationDetailHeader location={location} />
         <LocationDetailInfo location={location} />
         <LocationDetailChat />
+        <LocationsPhotoPage location={location} />
           {/* <div><h1>locationId: {`${location.id}`}</h1></div>
           <div><h1>locationId: {`${location.locationName}`}</h1></div> */}
         </Grid.Column>

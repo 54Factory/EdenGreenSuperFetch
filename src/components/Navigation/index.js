@@ -47,8 +47,12 @@ class Navigation extends Component {
             <img src="/assets/anonymousProfile200px.png" alt="logo" />
             SuperFetch
           </Menu.Item>
+          <Menu.Item as={NavLink} to="/home" name="Home" />
           <Menu.Item as={NavLink} to="/dashboard" name="Dashboard" />
-          <Menu.Item as={NavLink} to="/home" name="Home - Protected by auth" />     
+
+
+          
+          <Menu.Item as={NavLink} to="/users" name="Users - Protected by auth" />     
 
           {authenticated &&
           <Menu.Item>

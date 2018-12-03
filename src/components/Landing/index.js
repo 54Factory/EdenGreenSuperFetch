@@ -13,7 +13,7 @@ const LandingPage = ({history}) => {
             /> */}
             <div className="content">SuperFetch</div>
           </h1>
-          <div onClick={() => history.push('/signin')} className="ui huge white inverted button">
+          <div onClick={() => history.push('/dashboard')} className="ui huge white inverted button">
             Get Started
             <i className="right arrow icon" />
           </div>
