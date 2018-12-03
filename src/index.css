@@ -40,6 +40,11 @@ body {
   padding: 1em 0 !important;
 }
 
+.ui.secondary.segment {
+  background: #f3f4f5;
+  color: rgba(0,0,0,.6);
+  max-height: 50px
+}
 .masthead .ui.menu .ui.button,
 .ui.menu a.ui.inverted.button {
   margin-left: 0.5em;

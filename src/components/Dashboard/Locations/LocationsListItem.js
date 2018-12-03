@@ -31,7 +31,7 @@ class LocationsListItem extends Component {
           </span>
         </Segment>
         <Segment secondary>
-              <h2>Services</h2>
+              <p>Services</p>
           <List horizontal>
           {/* {location.services.map((service) => (
             <LocationsListServiceGroup key={service.id} service={service}/>
@@ -40,7 +40,7 @@ class LocationsListItem extends Component {
           </List>
         </Segment>
         <Segment secondary>
-              <h2>Recent Pickups</h2>
+              <p>Recent Pickups</p>
           <List horizontal>
           {/* {location.services.map((service) => (
             <LocationsListServiceGroup key={service.id} service={service}/>
