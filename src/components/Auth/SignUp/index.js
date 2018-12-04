@@ -66,12 +66,12 @@ class SignUpForm extends Component {
       .then(authUser => {
         console.log(authUser);
         db.doCreateFirestoreUser(authUser, firstName, lastName, username, email, role)
-        db.updateFirebaseUserProfile(authUser, authUser.user.uid, firstName, lastName, username, email, role)
+        db.updateFirebaseUserProfile(authUser, authUser.uid, firstName, lastName, username, email, role)
         // Create a user in your own accessible Firebase Database too
-        db.doCreateUser(authUser.user.uid, firstName, lastName, username, email, role)
+        //db.doCreateUser(authUser.user.uid, firstName, lastName, username, email, role)
           .then(() => {
             this.setState(() => ({ ...INITIAL_STATE }));
-            history.push('/home');
+            history.push('/dashboard');
           })
           .catch(error => {
             this.setState(updateByPropertyName('error', error));
