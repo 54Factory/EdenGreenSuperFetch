@@ -28,6 +28,7 @@ class UsersPage extends Component {
         <Header sub color="grey" content="Users" />
         <h1>Users</h1>
         <p>The Users Page is only accessible by a signed in user.</p>
+        <p>In Authenticated Menu Only - Not in Public Menu</p>
 
         { !!users && <UserList users={users} /> }
         </Grid.Column>

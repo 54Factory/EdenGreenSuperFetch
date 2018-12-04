@@ -9,7 +9,6 @@ import SignedInMenu from './SignedInMenu';
 import { firebase } from '../../firebase';
 
 
-
 const mapState = (state) => ({
   auth: state.firebase.auth,
   authUser: state.sessionState.authUser,
@@ -41,19 +40,14 @@ class Navigation extends Component {
     const { auth, profile, authUser} = this.props;
     const authenticated = authUser != null
     return (
-      <Menu inverted fixed="top">
+      <Menu stackable inverted >
         <Container>
+          
           <Menu.Item as={Link} to="/" header>
             <img src="/assets/anonymousProfile200px.png" alt="logo" />
             SuperFetch
           </Menu.Item>
           <Menu.Item as={NavLink} to="/home" name="Home" />
-          <Menu.Item as={NavLink} to="/dashboard" name="Dashboard" />
-
-
-          
-          <Menu.Item as={NavLink} to="/users" name="Users - Protected by auth" />     
-
           {authenticated &&
           <Menu.Item>
             <Button
@@ -62,7 +56,7 @@ class Navigation extends Component {
               floated="right"
               positive
               inverted
-              content="Create New Account"
+              content="Create Account"
             />
           </Menu.Item>}
           {authenticated ? (

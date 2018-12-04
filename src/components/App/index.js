@@ -17,6 +17,7 @@ import { Container } from 'semantic-ui-react';
 
 import './index.css';
 import PhotosPage from '../Users/PhotosPage';
+import ResponsiveLayout from '../Layout/ResponsiveLayout';
 
 
 class App extends Component {
@@ -46,6 +47,7 @@ class App extends Component {
                   <Route path="/create" component={CreateCustomer} />
                   <Route path="/customers" component={Customers} />
                   <Route path="/profile/photos/:id" component={PhotosPage} />  
+                  <Route path="/layout" component={ResponsiveLayout} />  
                 </Switch>
             </Container>               
             </div>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { withFirestore } from 'react-redux-firebase';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-import { Segment, Form, Button, Grid, Header } from 'semantic-ui-react';
+import { Segment, Form, Button, Container, Header } from 'semantic-ui-react';
 import {
   combineValidators,
   isRequired,
@@ -12,6 +12,8 @@ import TextInput from './components/TextInput';
 import PlaceInput from './components/PlaceInput';
 import { createNewAccount } from '../../../redux/actions/create'
 import SingleMarkerMapComponent from '../../Maps/SingleMarkerMap';
+
+
 
 const mapState = (state, ownProps) => {
   let location = {};
@@ -121,12 +123,7 @@ class NewAccountForm extends Component {
     console.log(this.props);
     
     return (
-      <Grid>
-        {/* <Script
-          url="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZWvcf7KHmOWX5EfFqZWkhl9pJw2GtiKk&libraries=places"
-          onLoad={this.handleScriptLoaded}
-        /> */}
-        <Grid.Column width={10}>
+      <Container style={{margin: "20px", padding: "0px 40px 0px 40px" }}>
           <Segment>   
             <Form onSubmit={this.props.handleSubmit(this.onFormSubmit)}>
               <Header sub color="grey" content="Location details" />
@@ -191,8 +188,7 @@ class NewAccountForm extends Component {
 
             </Form>
           </Segment>
-        </Grid.Column>
-      </Grid>
+      </Container>
     );
   }
 
