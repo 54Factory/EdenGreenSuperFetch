@@ -78,13 +78,13 @@ class PhotosPage extends Component {
     }
   }
 
-  // handleSetMainPhoto = (photo) => async () => {
-  //   try {
-  //     this.props.setMainPhoto(photo)
-  //   } catch (error) {
-  //     toastr.error('Oops', error.message)
-  //   }
-  // }
+  handleSetMainPhoto = (photo) => async () => {
+    try {
+      this.props.setMainPhoto(photo)
+    } catch (error) {
+      toastr.error('Oops', error.message)
+    }
+  }
 
   cropImage = () => {
     if (typeof this.refs.cropper.getCroppedCanvas() === 'undefined') {
@@ -192,12 +192,12 @@ class PhotosPage extends Component {
             filteredPhotos.map(photo => (
               <Card key={photo.id}>
                 <Image src={photo.url} />
-                {/* <div className="ui two buttons">
+                <div className="ui two buttons">
                   <Button onClick={this.handleSetMainPhoto(photo)} basic color="green">
                     Main
                   </Button>
                   <Button onClick={this.handlePhotoDelete(photo)} basic icon="trash" color="red" />
-                </div> */}
+                </div>
               </Card>
             ))}
         </Card.Group>

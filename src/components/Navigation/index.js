@@ -40,7 +40,7 @@ class Navigation extends Component {
     const { auth, profile, authUser} = this.props;
     const authenticated = authUser != null
     return (
-      <Menu stackable inverted >
+      <Menu stackable inverted fixed="top">
         <Container>
           
           <Menu.Item as={Link} to="/" header>

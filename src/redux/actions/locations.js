@@ -49,7 +49,7 @@ export const uploadLocationProfileImage = (file) => async (
   const firebase = getFirebase();
   const firestore = getFirestore();
   const locationId = getState().firestore.ordered.locations[0].id;
-  const path = `${locationId}/location`;
+  const path = `${locationId}/location_images`;
   const options = {
     name: imageName
   };
@@ -96,12 +96,12 @@ export const deletePhoto = (photo) =>
   async (dispatch, getState, {getFirebase, getFirestore}) => {
     const firebase = getFirebase();
     const firestore = getFirestore();
-    const user = firebase.auth().currentUser;
+    const locationId = getState().firestore.ordered.locations[0].id;
     try {
-      await firebase.deleteFile(`${user.uid}/user_images/${photo.name}`)
+      await firebase.deleteFile(`${locationId}/location_images/${photo.name}`)
       await firestore.delete({
-        collection: 'users',
-        doc: user.uid,
+        collection: 'locations',
+        doc: locationId,
         subcollections: [{collection: 'photos', doc: photo.id}]
       })
     } catch (error) {
@@ -111,12 +111,18 @@ export const deletePhoto = (photo) =>
   }
 
 export const setMainPhoto = photo =>
-  async (dispatch, getState, {getFirebase}) => {
-    const firebase = getFirebase();
+  async (dispatch, getState, {getFirebase, getFirestore}) => {
+    const firestore = getFirestore();
+    const locationId = getState().firestore.ordered.locations[0].id;
+    //let locationDoc = await firestore.get(`locations/${locationId}`);
+    const itemUpdates =  {
+      locationPhotoURL: photo.url,
+      updatedAt: firestore.FieldValue.serverTimestamp()
+    }
+    
+       
     try {
-      return await firebase.updateProfile({
-        photoURL: photo.url
-      })
+      return await firestore.update({ collection: 'locations', doc: `${locationId}` }, itemUpdates)
     } catch (error) {
       console.log(error);
       throw new Error('Problem setting main photo')

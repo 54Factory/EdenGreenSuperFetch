@@ -1,0 +1,176 @@
+[
+{
+    "type": "header",
+    "version": "4.7.7",
+    "comment": "Export to JSON plugin for PHPMyAdmin"
+},
+{
+    "type": "database",
+    "name": "edengre1_oilpickup"
+},
+{
+    "type": "table",
+    "name": "pickups",
+    "database": "edengre1_oilpickup",
+    "data": 
+[
+{
+    "id": "42761",
+    "user_id": "22",
+    "customer_id": "2090",
+    "location_id": "2157",   "volume": "0",
+    "gallons": "35",
+    "notes": "",
+    "notes_status": null,
+    "note_read": "1",
+    "waste": "",
+    "scheduled_on": "2018-08-07",
+    "picked_up": "1",
+    "pickedup_on": "2018-08-07 08:00:00"
+},
+{
+    "id": "42817",
+    "user_id": "22",
+    "customer_id": "2090",
+    "location_id": "2157",   "volume": "0",
+    "gallons": "40",
+    "notes": "",
+    "notes_status": null,
+    "note_read": "1",
+    "waste": "",
+    "scheduled_on": "2018-08-31",
+    "picked_up": "1",
+    "pickedup_on": "2018-08-31 08:32:00"
+},
+{
+    "id": "46919",
+    "user_id": null,
+    "customer_id": "2090",
+    "location_id": "2157",
+    "volume": null,
+    "gallons": null,
+    "notes": null,
+    "notes_status": null,
+    "note_read": "1",
+    "waste": "",
+    "scheduled_on": "2018-12-20",
+    "picked_up": "0",
+    "pickedup_on": null
+},
+{
+    "id": "44942",
+    "user_id": "22",
+    "customer_id": "2090",
+    "location_id": "2157",   "volume": "0",
+    "gallons": "30",
+    "notes": "",
+    "notes_status": null,
+    "note_read": "1",
+    "waste": "",
+    "scheduled_on": "2018-10-24",
+    "picked_up": "1",
+    "pickedup_on": "2018-10-26 06:45:00"
+},
+{
+    "id": "46260",
+    "user_id": "22",
+    "customer_id": "2090",
+    "location_id": "2157",   "volume": "0",
+    "gallons": "35",
+    "notes": "",
+    "notes_status": null,
+    "note_read": "1",
+    "waste": "",
+    "scheduled_on": "2018-11-29",
+    "picked_up": "1",
+    "pickedup_on": "2018-11-29 08:30:00"
+},
+{
+    "id": "43718",
+    "user_id": "22",
+    "customer_id": "2090",
+    "location_id": "2157",   "volume": "0",
+    "gallons": "30",
+    "notes": "",
+    "notes_status": null,
+    "note_read": "1",
+    "waste": "",
+    "scheduled_on": "2018-09-21",
+    "picked_up": "1",
+    "pickedup_on": "2018-09-21 05:28:00"
+},
+{
+    "id": "44500",
+    "user_id": "22",
+    "customer_id": "2090",
+    "location_id": "2157",   "volume": "0",
+    "gallons": "30",
+    "notes": "",
+    "notes_status": null,
+    "note_read": "1",
+    "waste": "",
+    "scheduled_on": "2018-10-03",
+    "picked_up": "1",
+    "pickedup_on": "2018-10-03 07:46:00"
+},
+{
+    "id": "45794",
+    "user_id": "22",
+    "customer_id": "2090",
+    "location_id": "2157",   "volume": "0",
+    "gallons": "35",
+    "notes": "",
+    "notes_status": null,
+    "note_read": "1",
+    "waste": "",
+    "scheduled_on": "2018-11-08",
+    "picked_up": "1",
+    "pickedup_on": "2018-11-08 09:18:00"
+},
+{
+    "id": "43182",
+    "user_id": "22",
+    "customer_id": "2091",
+    "location_id": "2158",   "volume": "0",
+    "gallons": "100",
+    "notes": "",
+    "notes_status": null,
+    "note_read": "1",
+    "waste": "",
+    "scheduled_on": "2018-08-17",
+    "picked_up": "1",
+    "pickedup_on": "2018-08-17 10:42:00"
+},
+{
+    "id": "43225",
+    "user_id": "22",
+    "customer_id": "2091",
+    "location_id": "2158",   "volume": "0",
+    "gallons": "30",
+    "notes": "",
+    "notes_status": null,
+    "note_read": "1",
+    "waste": "",
+    "scheduled_on": "2018-11-09",
+    "picked_up": "1",
+    "pickedup_on": "2018-11-09 08:59:00"
+},
+{
+    "id": "46316",
+    "user_id": null,
+    "customer_id": "2091",
+    "location_id": "2158",
+    "volume": null,
+    "gallons": null,
+    "notes": null,
+    "notes_status": null,
+    "note_read": "1",
+    "waste": "",
+    "scheduled_on": "2019-01-04",
+    "picked_up": "0",
+    "pickedup_on": null
+}
+]
+
+}
+]

@@ -56,6 +56,23 @@ class LocationsPhotosPage extends Component {
     }
   }
 
+  
+  handlePhotoDelete = (photo) => async () => {
+    try {
+      this.props.deletePhoto(photo);
+    } catch (error) {
+      toastr.error('Oops', error.message)
+    }
+  }
+
+  handleSetMainPhoto = (photo) => async () => {
+    try {
+      this.props.setMainPhoto(photo)
+    } catch (error) {
+      toastr.error('Oops', error.message)
+    }
+  }
+
   cancelCrop = () => {
     this.setState({
       files: [],
@@ -96,7 +113,7 @@ class LocationsPhotosPage extends Component {
 
     return (
       <Segment>
-              <Header sub color="teal" content="All Photos" />
+              <Header sub color="blue" content="All Photos" />
 
 <Card.Group itemsPerRow={5}>
   <Card>
@@ -107,19 +124,19 @@ class LocationsPhotosPage extends Component {
     filteredPhotos.map(photo => (
       <Card key={photo.id}>
         <Image src={photo.url} />
-        {/* <div className="ui two buttons">
+        <div className="ui two buttons">
           <Button onClick={this.handleSetMainPhoto(photo)} basic color="green">
             Main
           </Button>
           <Button onClick={this.handlePhotoDelete(photo)} basic icon="trash" color="red" />
-        </div> */}
+        </div>
       </Card>
     ))}
 </Card.Group>
           <Grid>
             <Grid.Row />
             <Grid.Column width={4}>
-              <Header color='teal' sub content='Step 1 - Add Photo'/>
+              <Header color='blue' sub content='Step 1 - Add Photo'/>
               <Dropzone onDrop={this.onDrop} multiple={true}>
                 <div style={{paddingTop: '30px', textAlign: 'center'}}>
                   <Icon name='upload' size='huge' />
@@ -129,7 +146,7 @@ class LocationsPhotosPage extends Component {
             </Grid.Column>
             <Grid.Column width={1} />
             <Grid.Column width={4}>
-              <Header sub color='teal' content='Step 2 - Resize image' />
+              <Header sub color='blue' content='Step 2 - Resize image' />
               {this.state.files[0] && 
                 <Cropper 
                   style={{height: 200, width: '100%'}}
@@ -148,7 +165,7 @@ class LocationsPhotosPage extends Component {
             </Grid.Column>
             <Grid.Column width={1} />
             <Grid.Column width={4}>
-                <Header sub color='teal' content='Step 3 - Preview and Upload' />
+                <Header sub color='blue' content='Step 3 - Preview and Upload' />
                 {this.state.files[0] && (
                 <div>
                   <Image style={{minHeight: '200px', minWidth: '200px'}} src={this.state.cropResult} />

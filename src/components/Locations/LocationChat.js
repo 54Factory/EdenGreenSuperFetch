@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Header, Comment, Form, Button } from 'semantic-ui-react';
+import { Segment, Header, Comment, TextArea, Form, Button } from 'semantic-ui-react';
 
 const LocationDetailChat = () => {
   return (
@@ -11,37 +11,19 @@ const LocationDetailChat = () => {
         color="black"
         style={{ border: 'none' }}
       >
-        <Header>Chat about this event</Header>
+        <Header>Location Channel</Header>
       </Segment>
 
       <Segment attached>
         <Comment.Group>
           <Comment>
-            <Comment.Avatar src="/assets/user.png" />
+          <Comment.Avatar src="/assets/user.png" />
             <Comment.Content>
-              <Comment.Author as="a">Matt</Comment.Author>
+              <Comment.Author as="a">Geovannie</Comment.Author>
               <Comment.Metadata>
-                <div>Today at 5:42PM</div>
+                <div>Today at 1:42PM</div>
               </Comment.Metadata>
-              <Comment.Text>How artistic!</Comment.Text>
-              <Comment.Actions>
-                <Comment.Action>Reply</Comment.Action>
-              </Comment.Actions>
-            </Comment.Content>
-          </Comment>
-
-          <Comment>
-            <Comment.Avatar src="/assets/user.png" />
-            <Comment.Content>
-              <Comment.Author as="a">Elliot Fu</Comment.Author>
-              <Comment.Metadata>
-                <div>Yesterday at 12:30AM</div>
-              </Comment.Metadata>
-              <Comment.Text>
-                <p>
-                  This has been very useful for my research. Thanks as well!
-                </p>
-              </Comment.Text>
+              <Comment.Text>Customer wants a grease trap cleaning</Comment.Text>
               <Comment.Actions>
                 <Comment.Action>Reply</Comment.Action>
               </Comment.Actions>
@@ -50,11 +32,11 @@ const LocationDetailChat = () => {
               <Comment>
                 <Comment.Avatar src="/assets/user.png" />
                 <Comment.Content>
-                  <Comment.Author as="a">Jenny Hess</Comment.Author>
+                  <Comment.Author as="a">Aaron</Comment.Author>
                   <Comment.Metadata>
                     <div>Just now</div>
                   </Comment.Metadata>
-                  <Comment.Text>Elliot you are always so right :)</Comment.Text>
+                  <Comment.Text>Ok, I will set them up.</Comment.Text>
                   <Comment.Actions>
                     <Comment.Action>Reply</Comment.Action>
                   </Comment.Actions>
@@ -62,23 +44,8 @@ const LocationDetailChat = () => {
               </Comment>
             </Comment.Group>
           </Comment>
-
-          <Comment>
-            <Comment.Avatar src="/assets/user.png" />
-            <Comment.Content>
-              <Comment.Author as="a">Joe Henderson</Comment.Author>
-              <Comment.Metadata>
-                <div>5 days ago</div>
-              </Comment.Metadata>
-              <Comment.Text>Dude, this is awesome. Thanks so much</Comment.Text>
-              <Comment.Actions>
-                <Comment.Action>Reply</Comment.Action>
-              </Comment.Actions>
-            </Comment.Content>
-          </Comment>
-
           <Form reply>
-            <Form.TextArea />
+            <TextArea autoHeight />
             <Button
               content="Add Reply"
               labelPosition="left"

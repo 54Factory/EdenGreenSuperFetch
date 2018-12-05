@@ -19,7 +19,7 @@ const LocationDetailHeader = ({location}) => {
   return (
     <Segment.Group>
       <Segment basic attached="top" style={{ padding: '0' }}>
-        <Image src={`/assets/categoryImages/food.jpg`} fluid style={locationImageStyle} />
+        <Image src={location.locationPhotoURL} fluid style={locationImageStyle} />
         {/* <Image src={`/assets/categoryImages/${location.category}.jpg`} fluid style={locationImageStyle} /> */}
 
         <Segment basic style={locationImageTextStyle}>
