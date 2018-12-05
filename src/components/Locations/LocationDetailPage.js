@@ -68,7 +68,6 @@ class LocationDetailPage extends Component {
   }
 
   render() {
-    // console.log('LocDets',this.props);
     
     const { match, requesting, location, } = this.props;
     const loadingLocation = requesting[`locations/${match.params.id}`]
@@ -82,8 +81,6 @@ class LocationDetailPage extends Component {
         <LocationDetailInfo location={location} />
         <LocationDetailChat />
         <LocationsPhotoPage location={location} />
-          {/* <div><h1>locationId: {`${location.id}`}</h1></div>
-          <div><h1>locationId: {`${location.locationName}`}</h1></div> */}
         </Grid.Column>
         <Grid.Column width={6}>
         <LocationDetailSidebar />
@@ -94,33 +91,3 @@ class LocationDetailPage extends Component {
 }
 
 export default withFirestore(connect(mapState, {})(LocationDetailPage));
-
-
-// import React from 'react';
-// import { Grid } from 'semantic-ui-react';
-// import { connect } from 'react-redux'
-
-
-// const mapState = (state, ownProps) => {
-//   const locationId = ownProps.match.params.id;
-
-//   let location = {};
-
-//   if (locationId && state.locations.length > 0) {
-//     location = state.locations.filter(location => location.id === locationId)[0]
-//   }
-
-//   return {
-//     location
-//   }
-// }
-
-// const LocationDetailPage = ({location}) => {
-//   return (
-// <div>
-//   <h1>By Id Page: {`${location.id}`}</h1>
-// </div>
-//   );
-// };
-
-// export default connect(mapState)(LocationDetailPage);

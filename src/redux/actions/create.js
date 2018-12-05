@@ -20,7 +20,7 @@ export const createNewAccount = location => {
         ownedLocations: {
           [createdLocation.id]: {
             locationName: location.locationName,
-            photoURL: 'assets/userPhoto.jpg',
+            photoURL: '/assets/userPhoto.jpg',
           }
         },
       });

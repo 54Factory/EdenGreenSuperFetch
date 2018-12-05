@@ -109,9 +109,6 @@ class PhotosPage extends Component {
 
   render() {
     const { photos, profile, loading } = this.props;
-    console.log('Props====>', this.props);
-   
-    console.log('State====>', this.state);
     let filteredPhotos;
     if (photos) {
       filteredPhotos = photos.filter(photo => {

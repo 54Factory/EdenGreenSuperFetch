@@ -102,8 +102,6 @@ class LocationsPhotosPage extends Component {
 
   render() {
     const { loading, location, photos } = this.props
-    console.log(location);
-    console.log(this.state);
     let filteredPhotos;
     if (photos) {
       filteredPhotos = photos.filter(photo => {

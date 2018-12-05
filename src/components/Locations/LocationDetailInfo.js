@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
 import { Segment, Grid, Icon, Button } from 'semantic-ui-react';
 import LocationDetailMap from './LocationDetailMap';
+import CustomerProfileCard from '../Customers/CustomerProfileCard';
 
 class LocationDetailInfo extends Component {
   state = {
-    showMap: false
+    showMap: false,
+    showCustomerCard: false
   }
 
   componentWillUnmount() {
     this.setState({
-      showMap: false
+      showMap: false,
+      showCustomerCard: false
     })
   }
 
@@ -18,22 +21,31 @@ class LocationDetailInfo extends Component {
       showMap: !prevState.showMap
     }))
   }
+  showCustomerProfileToggle = () => {
+    this.setState(prevState => ({
+      showCustomerCard: !prevState.showCustomerCard
+    }))
+  }
 
   render() {
     const { location } = this.props;
       return (
     <Segment.Group>
       <Segment attached="top">
-        <Grid>
+        <Grid verticalAlign="middle">
           <Grid.Column width={1}>
-            <Icon size="large" color="blue" name="info" />
+            <Icon name="info" size="large" color="blue" />
           </Grid.Column>
-          <Grid.Column width={15}>
-            {/* <p>{location.description}</p> */}
-            <p>Some Detail Info</p>
+          <Grid.Column width={11}>
+            <span>Ownership</span>
           </Grid.Column>
-        </Grid>
-      </Segment>
+          <Grid.Column width={4}>
+              <Button onClick={this.showCustomerProfileToggle} color="blue" size="tiny" content={this.state.showCustomerProfileToggle ? 'Hide Profile' : 'Show Profile'}/>
+            </Grid.Column>
+          </Grid>
+        </Segment>
+        {this.state.showCustomerCard &&
+          <CustomerProfileCard profile={location} ownershipId={location.ownershipProfileId}/>}
       <Segment attached>
         <Grid verticalAlign="middle">
           <Grid.Column width={1}>
