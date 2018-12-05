@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { withFirestore } from 'react-redux-firebase';
@@ -12,6 +13,7 @@ import TextInput from './components/TextInput';
 import PlaceInput from './components/PlaceInput';
 import { createNewAccount } from '../../../redux/actions/create'
 import SingleMarkerMapComponent from '../../Maps/SingleMarkerMap';
+import SelectInput from './components/SelectInput';
 
 
 
@@ -35,6 +37,12 @@ const validate = combineValidators({
   locationName: isRequired('locationName'),
   address: isRequired('address'),
 });
+
+const options = [
+  { key: 't', text: 'Yes', value: true },
+  { key: 'f', text: 'No', value: false },
+]
+
 
 class NewAccountForm extends Component {
   state = {
@@ -83,7 +91,7 @@ class NewAccountForm extends Component {
     } else {
       this.props.createNewAccount(values);
       console.log('Submitted'); 
-      this.props.history.push('/dashboard');
+      this.props.ownProps.history.push('/dashboard');
     }
   };
   renderGeocodeFailure(error) {
@@ -162,6 +170,15 @@ class NewAccountForm extends Component {
                 component={TextInput}
                 placeholder="Last Name"
               />
+            <Header size='medium' color="grey" content="Service Details" />
+            <Header sub color="grey" content="Add Oil Collection" />
+             <Field
+             label="Add Oil Collection"
+                name="hasOilCollection"
+                component={SelectInput}
+                options={options}
+                placeholder="Oil Collection"
+              />
               <Button
                 loading={loading}
                 disabled={invalid || submitting || pristine}
@@ -194,10 +211,10 @@ class NewAccountForm extends Component {
 
 }
 
-export default withFirestore(
+export default withRouter(withFirestore(
   connect(mapState, actions)(
     reduxForm({ form: 'newAccountForm', enableReinitialize: true, validate })(
       NewAccountForm
     )
   )
-);
+));

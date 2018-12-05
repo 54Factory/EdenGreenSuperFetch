@@ -19,12 +19,15 @@ export const createDataTree = dataset => {
 // DATABASE - MODELLING SHAPE OF DATA
 // CREATE NEW CUSTOMER
 
-export const createNewLocation = (ownedById, location, photoURL) => {
+export const createNewLocation = (ownedById, oilCollectionServiceId, oilCollectionSetupServiceId, location, photoURL) => {
   console.log(location);
   return {
     ...location,
+    oilCollection: location.hasOilCollection, 
     ownershipProfileId: ownedById,
-    locationPhotoURL: "assets/pizza_pyramids_1250235.jpg",
+    locationPhotoURL: "assets/categoryImages/drinks.jpg",
+    oilCollectionServiceId: oilCollectionServiceId,
+    oilCollectionSetUpId: oilCollectionSetupServiceId,
     dateCreated: Date.now(),
     ownedBy: {
       [ownedById]: {
