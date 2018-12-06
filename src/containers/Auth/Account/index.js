@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 
-import { PasswordForgetForm } from '../Auth/PasswordForget';
-import PasswordChangeForm from '../Auth/PasswordChange';
-import withAuthorization from '../Auth/Session/withAuthorization';
+import { PasswordForgetForm } from '../PasswordForget';
+import PasswordChangeForm from '../PasswordChange';
+import withAuthorization from '../Session/withAuthorization';
 
 const AccountPage = ({ authUser }) =>
   <div>
@@ -22,4 +22,5 @@ const authCondition = (authUser) => !!authUser;
 export default compose(
   withAuthorization(authCondition),
   connect(mapStateToProps)
-)(AccountPage);
+)(AccountPage);  
+

@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-//import SearchBar from './Forms/LocationSearchBar';
 import NewAccountForm from './Forms/NewAccountForm';
-
-
 import { Container, Header, Segment } from 'semantic-ui-react'
 
 const style = {

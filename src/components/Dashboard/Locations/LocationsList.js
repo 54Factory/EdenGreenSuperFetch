@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import LocationsListItem from './LocationsListItem'
+import LocationsListItem from './locationsListItem'
 
 
 class LocationsList extends Component {

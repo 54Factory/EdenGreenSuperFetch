@@ -3,7 +3,7 @@ import { Grid, Header } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { deleteLocation } from '../../redux/actions/locations';
-import LocationsList from './Locations/LocationsList';
+import LocationsList from './locations/locationsList';
 import LoadingComponent from '../../helpers/LoadingComponent';
 
 const mapState = state => ({

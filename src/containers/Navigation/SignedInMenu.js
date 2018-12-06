@@ -6,8 +6,10 @@ const SignedInMenu = ({signOut, profile, auth}) => {
   
   return (
     <Menu.Item position="right">
-      <Menu.Item as={Link} to="/dashboard" name="Dashboard" />
-      <Menu.Item as={Link} to="/users" name="Users" />   
+      <Menu.Item as={Link} to="/dashboard" name="Dashboard" />   
+      <Menu.Item as={Link} to="/oilCollection" name="Oil Collection" />   
+      <Menu.Item as={Link} to="/oilCollectionSetup" name="Oil Collection Set Up" /> 
+      <Menu.Item as={Link} to="/users" name="Users" />  
       <Menu.Item>
         <Image avatar spaced="right" src={profile.photoURL || "/assets/user.png"} />
         <Dropdown pointing="top left" text={profile.username}>

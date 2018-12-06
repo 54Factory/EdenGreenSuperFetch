@@ -1,6 +1,6 @@
 import cuid from 'cuid';
 import { toastr } from 'react-redux-toastr';
-import { createNewLocation } from '../../components/Create/dataHelpers/helpers';
+import { createNewLocation } from '../../crud/dataHelpers/helpers';
 
 const ownedById = cuid();
 const oilCollectionServiceId = cuid()
@@ -20,18 +20,20 @@ export const createNewAccount = location => {
         ownedLocations: {
           [createdLocation.id]: {
             locationName: location.locationName,
-            photoURL: '/assets/userPhoto.jpg',
+            photoURL: 'assets/user.png',
           }
         },
       });
       await firestore.set(`oilCollection/${createdLocation.id}_${oilCollectionServiceId}`, {
         locationName: location.locationName,
-        locationId: createdLocation.id
+        locationId: createdLocation.id,
+        isSetUp: false
       });
       await firestore.set(`oilCollectionSetup/${createdLocation.id}_${oilCollectionSetupServiceId}`, {
         locationName: location.locationName,
         locationId: createdLocation.id,
         oilCollectionServiceId,
+        isComplete: false
       });
       console.log('Success', 'New Account has been created');
       console.log(createdLocation);

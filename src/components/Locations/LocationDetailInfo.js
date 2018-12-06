@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Segment, Grid, Icon, Button } from 'semantic-ui-react';
-import LocationDetailMap from './LocationDetailMap';
-import CustomerProfileCard from '../Customers/CustomerProfileCard';
+import LocationDetailMap from './locationDetailMap';
+import CustomerProfileCard from '../customers/customerProfileCard';
 
 class LocationDetailInfo extends Component {
   state = {

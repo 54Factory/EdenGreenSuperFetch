@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import { withFirestore } from 'react-redux-firebase';
 import { toastr } from 'react-redux-toastr'
 import LoadingComponent from '../../helpers/LoadingComponent'
-import LocationDetailHeader from './LocationDetailHeader';
-import LocationDetailInfo from './LocationDetailInfo';
-import LocationDetailChat from './LocationChat';
-import LocationDetailSidebar from './LocationDetailSidebar';
-import LocationsPhotoPage from './Settings/PhotosPage'
+import LocationDetailHeader from './locationDetailHeader';
+import LocationDetailInfo from './locationDetailInfo';
+import LocationDetailChat from './locationChat';
+import LocationDetailSidebar from './locationDetailSidebar';
+import LocationsPhotoPage from './locationPhotosPage';
 // import EventDetailedHeader from './EventDetailedHeader';
 // import EventDetailedInfo from './EventDetailedInfo';
 // import EventDetailedChat from './EventDetailedChat';

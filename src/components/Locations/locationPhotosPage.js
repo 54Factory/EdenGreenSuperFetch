@@ -7,7 +7,7 @@ import { toastr } from 'react-redux-toastr';
 import Dropzone from 'react-dropzone';
 import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
-import { uploadLocationProfileImage, deletePhoto, setMainPhoto } from '../../../redux/actions/locations';
+import { uploadLocationProfileImage, deletePhoto, setMainPhoto } from '../../redux/actions/locations';
 
 
 
@@ -21,6 +21,7 @@ const query = ({ location }) => {
     }
   ];
 };
+
 
 
 const actions = {

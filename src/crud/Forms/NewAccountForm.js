@@ -11,8 +11,8 @@ import {
 } from 'revalidate';
 import TextInput from './components/TextInput';
 import PlaceInput from './components/PlaceInput';
-import { createNewAccount } from '../../../redux/actions/create'
-import SingleMarkerMapComponent from '../../Maps/SingleMarkerMap';
+import { createNewAccount } from '../../redux/actions/create'
+import SingleMarkerMapComponent from '../../components/maps/singleMarkerMap';
 import SelectInput from './components/SelectInput';
 
 
@@ -174,7 +174,7 @@ class NewAccountForm extends Component {
             <Header sub color="grey" content="Add Oil Collection" />
              <Field
              label="Add Oil Collection"
-                name="hasOilCollection"
+                name="oilCollection"
                 component={SelectInput}
                 options={options}
                 placeholder="Oil Collection"
@@ -187,7 +187,7 @@ class NewAccountForm extends Component {
               >
                 Submit
               </Button>
-              <Button disabled={loading} type="button">
+              <Button disabled={loading} onClick={this.props.history.goBack} type="button">
                 Cancel
               </Button>
               {/* {event.id &&

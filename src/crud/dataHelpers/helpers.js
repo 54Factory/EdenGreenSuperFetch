@@ -23,17 +23,17 @@ export const createNewLocation = (ownedById, oilCollectionServiceId, oilCollecti
   console.log(location);
   return {
     ...location,
-    oilCollection: location.hasOilCollection, 
+    oilCollectionActive: false, 
     ownershipProfileId: ownedById,
-    locationPhotoURL: "assets/categoryImages/drinks.jpg",
+    locationPhotoURL: "/assets/categoryImages/drinks.jpg",
     oilCollectionServiceId: oilCollectionServiceId,
     oilCollectionSetUpId: oilCollectionSetupServiceId,
     dateCreated: Date.now(),
     ownedBy: {
       [ownedById]: {
         displayName: `${location.firstName} ${location.lastName}`,
-        photoURL: photoURL || 'assets/userPhoto.jpg'
+        photoURL: photoURL || '/assets/user.png'
       }
     }
   }
-}
+} 
