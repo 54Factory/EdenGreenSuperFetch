@@ -6,7 +6,7 @@ import { firestoreReducer } from 'redux-firestore'
 import sessionReducer from './session';
 import userReducer from './user';
 import asyncReducer from './async';
-import createReducer from './create'
+import createReducer from './create/create'
 import locationsReducer from './locations'
 
 const rootReducer = combineReducers({

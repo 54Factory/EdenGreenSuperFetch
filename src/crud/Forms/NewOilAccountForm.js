@@ -12,7 +12,7 @@ import {
 import TextInput from './components/TextInput';
 import PlaceInput from './components/PlaceInput';
 import DateInput from './components/DateInput';
-import { createNewAccount } from '../../redux/actions/create'
+import { createNewAccount } from '../../redux/actions/create/createNewAccount'
 import SingleMarkerMapComponent from '../../components/maps/singleMarkerMap';
 import SelectInput from './components/SelectInput';
 

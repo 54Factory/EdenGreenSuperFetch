@@ -17,6 +17,8 @@ import PhotosPage from '../../components/users/userPhotosPage';
 import ResponsiveLayout from '../layout/responsiveLayout';
 import OilCollectionPage from '../../containers/LocationServices/OilCollection';
 import OilCollectionSetupPage from '../../containers/LocationServices/OilCollectionSetUp';
+import OilCollectionSetUpDetails from '../../components/oilCollectionSetUp/oilCollectionSetUpDetails';
+
 import './index.css';
 
 class App extends Component {
@@ -45,8 +47,10 @@ class App extends Component {
               {/* Locations */}
                   <Route path="/locations/:id" component={LocationDetailPage} />
               {/* OilCollection */}
+                  <Route path="/oilCollectionSetup/:id" component={OilCollectionSetUpDetails} />
                   <Route path="/oilCollection" component={OilCollectionPage} />
                   <Route path="/oilCollectionSetup" component={OilCollectionSetupPage} /> 
+                   
               {/* Users */}
                   <Route path="/users" component={UsersPage} /> 
                   <Route path="/profile/photos/:id" component={PhotosPage} /> 

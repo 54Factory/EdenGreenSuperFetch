@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
+
 import { withFirestore } from 'react-redux-firebase';
-import { List } from 'semantic-ui-react'
+import { List, Button } from 'semantic-ui-react'
 import dateFormat from 'dateformat'
 import LoadingComponent from '../../helpers/LoadingComponent';
 
@@ -40,7 +42,10 @@ const mapState = (state, ownProps) => {
           )}</List.Description>
 
       </List.Content>
+      <Button as={Link} to={`/oilCollectionSetup/${setup.id}`} color="blue" floated="right" content="View" />
+
     </List.Item>
+    
       ))}
     </List>
     )

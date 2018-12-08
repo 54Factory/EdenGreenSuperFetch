@@ -1,6 +1,6 @@
 import cuid from 'cuid';
 import { toastr } from 'react-redux-toastr';
-import { createNewLocation } from '../../crud/dataHelpers/helpers';
+import { createNewLocation } from '../../../crud/dataHelpers/helpers';
 import moment from 'moment';
 
 const ownedById = cuid();
