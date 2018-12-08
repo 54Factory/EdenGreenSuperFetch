@@ -11,7 +11,7 @@ import AccountPage from '../../containers/Auth/Account';
 import Customers from '../../containers/Customers';
 import CreateCustomer from '../../crud';
 import UsersPage from '../../containers/Users'
-import Dashboard from '../dashboard';
+import Dashboard from '../locations/dashboard';
 import LocationDetailPage from '../locations/locationDetailPage';
 import PhotosPage from '../../components/users/userPhotosPage';
 import ResponsiveLayout from '../layout/responsiveLayout';

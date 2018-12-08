@@ -1,3 +1,4 @@
+//import moment from 'moment';
 
 export const objectToArray = (object) => {
   if (object) {
@@ -20,9 +21,11 @@ export const createDataTree = dataset => {
 // CREATE NEW CUSTOMER
 
 export const createNewLocation = (ownedById, oilCollectionServiceId, oilCollectionSetupServiceId, location, photoURL) => {
+  location.oilCollectionSetUpDate = null;
   console.log(location);
   return {
     ...location,
+    oilCollection: true,
     oilCollectionActive: false, 
     ownershipProfileId: ownedById,
     locationPhotoURL: "/assets/categoryImages/drinks.jpg",

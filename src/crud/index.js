@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import NewAccountForm from './Forms/NewAccountForm';
+import NewOilAccountForm from './Forms/NewOilAccountForm';
 import { Container, Header, Segment } from 'semantic-ui-react'
 
 const style = {
@@ -25,7 +25,7 @@ class Create extends Component {
         <Header as='h1' textAlign='left' style={style.h1} content='Create Account' />
         <Container>
           <Segment.Group>
-            <Segment><NewAccountForm /></Segment>
+            <Segment><NewOilAccountForm /></Segment>
           </Segment.Group>
         </Container>
       </div>

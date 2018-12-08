@@ -115,3 +115,9 @@ body {
   padding-bottom: 0 !important;
   padding-left: 2em !important;
 }
+
+/*location details*/
+
+.ui.horizontal.label {
+  margin-left: 0.5em;
+}

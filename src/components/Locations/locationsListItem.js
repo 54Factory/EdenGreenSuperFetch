@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import { Segment, Item, Icon, List, Button } from 'semantic-ui-react';
+import { Segment, Item, Icon, List, Button, Label } from 'semantic-ui-react';
 
 class LocationsListItem extends Component {
   render() {
     const { location } = this.props
+    console.log(this.props);
+    
     return (
       <Segment.Group>
         <Segment>
@@ -25,10 +27,22 @@ class LocationsListItem extends Component {
           </Item.Group>
         </Segment>
         <Segment>
+          {location.oilCollectionSetUpDate === null ? (
           <span>
+          <Icon name="clock" color="red"/> 
+          Next Service:    
+          <Label color='red' horizontal>
+          Pending Set Up...
+          </Label>    |
+          <Icon name="marker" /> {location.address}
+        </span>
+          ) : (
+            <span>
             <Icon name="clock" /> Next Service: *from oilCollectionModel*    |
             <Icon name="marker" /> {location.address}
-          </span>
+          </span>           
+          )}
+
         </Segment>
         <Segment secondary>
               <p>Services</p>

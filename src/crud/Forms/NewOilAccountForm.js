@@ -11,6 +11,7 @@ import {
 } from 'revalidate';
 import TextInput from './components/TextInput';
 import PlaceInput from './components/PlaceInput';
+import DateInput from './components/DateInput';
 import { createNewAccount } from '../../redux/actions/create'
 import SingleMarkerMapComponent from '../../components/maps/singleMarkerMap';
 import SelectInput from './components/SelectInput';
@@ -19,6 +20,10 @@ import SelectInput from './components/SelectInput';
 
 const mapState = (state, ownProps) => {
   let location = {};
+
+  // if (state.firestore.ordered.locations && state.firestore.ordered.locations[0]) {
+  //   location = state.firestore.ordered.locations[0]
+  // }
 
   return {
     initialValues: location,
@@ -38,13 +43,29 @@ const validate = combineValidators({
   address: isRequired('address'),
 });
 
-const options = [
-  { key: 't', text: 'Yes', value: true },
-  { key: 'f', text: 'No', value: false },
+
+const collectionContainerOptions = [
+  { key: '0', text: '55 Gallon Drum', value: "55 Gallon Drum" },
+  { key: '1', text: '150 Gallon Dumpster', value: "150 Gallon Dumpster" }
+]
+const collectionContainerQuantityOptions = [
+  { key: '0', text: '1', value: 1 },
+  { key: '1', text: '2', value: 2 },
+  { key: '2', text: '3', value: 3 }
+]
+
+const collectionCycleOptions = [
+  { key: '0', text: 'On Call', value: 1 },
+  { key: '1', text: 'Every Week', value: 7 },
+  { key: '2', text: 'Every 2 Weeks', value: 14 },
+  { key: '3', text: 'Every 3 Weeks', value: 21 },
+  { key: '4', text: 'Every 4 Weeks', value: 28 },
+  { key: '5', text: 'Every 6 Weeks', value: 42 },
+  { key: '6', text: 'Every 8 Weeks', value: 54 },
 ]
 
 
-class NewAccountForm extends Component {
+class NewOilAccountForm extends Component {
   state = {
     locationLatLng: {},
     geocodeResults: null,
@@ -128,7 +149,8 @@ class NewAccountForm extends Component {
 
   render() {
     const { invalid, submitting, pristine, loading } = this.props;
-    console.log(this.props);
+    // console.log(this.props);
+    // console.log(this.state);
     
     return (
       <Container style={{margin: "20px", padding: "0px 40px 0px 40px" }}>
@@ -170,14 +192,38 @@ class NewAccountForm extends Component {
                 component={TextInput}
                 placeholder="Last Name"
               />
-            <Header size='medium' color="grey" content="Service Details" />
-            <Header sub color="grey" content="Add Oil Collection" />
+            <Header size='medium' color="grey" content="Oil Collection Details" />
+            {/* <Header sub color="grey" content="Select Service Schedule Type" /> */}
              <Field
-             label="Add Oil Collection"
-                name="oilCollection"
+             label="Collection Schedule"
+                name="oilCollectionCycle"
                 component={SelectInput}
-                options={options}
-                placeholder="Oil Collection"
+                options={collectionCycleOptions}
+                placeholder="Collection Cycle"
+              />
+             <Field
+             label="Container Type"
+                name="oilCollectionContainerType"
+                component={SelectInput}
+                options={collectionContainerOptions}
+                placeholder="Container Type"
+              />
+             <Field
+             label="Container Type"
+                name="oilCollectionContainerQuantity"
+                component={SelectInput}
+                options={collectionContainerQuantityOptions}
+                placeholder="Container Type"
+              />
+              <Field
+                name="oilCollectionSetUpDate"
+                type="text"
+                component={DateInput}
+                dateFormat='YYYY-MM-DD HH:mm'
+                timeFormat='HH:mm'
+                showTimeSelect
+                placeholder="Set Up Date"
+                todayButton={"Today"}
               />
               <Button
                 loading={loading}
@@ -213,8 +259,8 @@ class NewAccountForm extends Component {
 
 export default withRouter(withFirestore(
   connect(mapState, actions)(
-    reduxForm({ form: 'newAccountForm', enableReinitialize: true, validate })(
-      NewAccountForm
+    reduxForm({ form: 'newOilAccountForm', enableReinitialize: true, validate })(
+      NewOilAccountForm
     )
   )
 ));

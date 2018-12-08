@@ -1,30 +1,51 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { withFirestore } from 'react-redux-firebase';
 import { List } from 'semantic-ui-react'
+import dateFormat from 'dateformat'
+import LoadingComponent from '../../helpers/LoadingComponent';
 
-export default function OilCollectionSetUpList() {
-  return (
-    <List divided relaxed>
-    <List.Item>
-      <List.Icon name='shipping fast' size='large' verticalAlign='middle' />
-      <List.Content>
-        <List.Header as='a'>Set Up Point-1</List.Header>
-        <List.Description as='a'>Updated 10 mins ago</List.Description>
-      </List.Content>
-    </List.Item>
-    <List.Item>
-      <List.Icon name='shipping fast' size='large' verticalAlign='middle' />
-      <List.Content>
-        <List.Header as='a'>Set Up Point-2</List.Header>
-        <List.Description as='a'>Updated 22 mins ago</List.Description>
-      </List.Content>
-    </List.Item>
-    <List.Item>
-      <List.Icon name='shipping fast' size='large' verticalAlign='middle' />
-      <List.Content>
-        <List.Header as='a'>Set Up Point-3</List.Header>
-        <List.Description as='a'>Updated 34 mins ago</List.Description>
-      </List.Content>
-    </List.Item>
-  </List>
-  )
+
+const mapState = (state, ownProps) => {
+  let setup = {};
+
+  return {
+    requesting: state.firestore.status.requesting,
+    setup
+  }
+
 }
+
+ class OilCollectionSetUpList extends Component {
+
+  render() {
+    const { setups } = this.props;
+    if (!setups) return <LoadingComponent inverted={true}/>
+    console.log() 
+    console.log(setups);
+    return (
+      <List divided relaxed>
+      {setups.map((setup) => (
+      <List.Item key={setup.id}>
+      <List.Icon name='clock' size='large' verticalAlign='middle' />
+      <List.Content>
+        <List.Header as='a'>{setup.locationName}</List.Header>
+        <List.Description>Container Details: {setup.oilCollectionContainerQuantity} - {
+          setup.oilCollectionContainerQuantity <= 1 ? 
+          setup.oilCollectionContainerType : `${setup.oilCollectionContainerType}s` 
+        }
+        </List.Description>
+        <List.Description>{(
+          dateFormat(new Date(setup.oilCollectionSetUpDate.seconds*1000), "mmmm dS, yyyy h:MM TT")    
+          )}</List.Description>
+
+      </List.Content>
+    </List.Item>
+      ))}
+    </List>
+    )
+  }
+}
+
+
+export default withFirestore(connect(mapState, {})(OilCollectionSetUpList))
