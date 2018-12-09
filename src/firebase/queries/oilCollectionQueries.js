@@ -1,31 +1,18 @@
-export const oilCollectionSetUpQuery = ({auth, userUid, match}) => {
-  if (userUid !== null) {
+export const oilCollectionSetUpQuery = ({locationId}) => {
+  if (locationId !== null) {
     return [
       {
-        collection: 'users',
-        doc: userUid,
-        storeAs: 'profile' 
-      },
-      {
-        collection: 'users',
-        doc: userUid,
-        subcollections: [{collection: 'photos'}],
-        storeAs: 'photos' 
-      },
-      {
-        collection: 'users',
-        doc: auth.uid,
-        subcollections: [{collection: 'following', doc: match.params.id}],
-        storeAs: 'following' 
+        collection: 'locations',
+        doc: locationId,
+        storeAs: 'locationDetails' 
       }
     ]
   } else {
     return [
       {
-        collection: 'users',
-        doc: auth.uid,
-        subcollections: [{collection: 'photos'}],
-        storeAs: 'photos'
+        collection: 'locations',
+        doc: locationId,
+        storeAs: 'locationDetails'
       }
     ]
   }
