@@ -6,10 +6,19 @@ import { firestoreConnect } from 'react-redux-firebase';
 import LoadingComponent from '../../../helpers/LoadingComponent';
 import OilCollectionSetUpList from '../../../components/oilCollectionSetUp/oilCollectionSetUpList';
 
+const query = [
+  {
+    collection: 'oilCollectionSetup',
+    orderBy: ['oilCollectionSetUpDate', 'asc'],
+    limit: 5
+  }
+]
+
 const mapState = state => ({
   setups: state.firestore.ordered.oilCollectionSetup,
   requesting: state.firestore.status.requesting
 });
+
 
 class OilCollectionSetUpPage extends Component {
 
@@ -31,5 +40,8 @@ class OilCollectionSetUpPage extends Component {
 }
 
 export default connect(mapState, null)(
-  firestoreConnect([{ collection: 'oilCollectionSetup' }])(OilCollectionSetUpPage)
+  firestoreConnect(query)(OilCollectionSetUpPage)
 );
+// export default connect(mapState, null)(
+//   firestoreConnect([{ collection: 'oilCollectionSetup' }])(OilCollectionSetUpPage)
+// );

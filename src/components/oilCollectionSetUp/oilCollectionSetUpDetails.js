@@ -7,6 +7,7 @@ import { withFirestore, firestoreConnect } from 'react-redux-firebase';
 import { toastr } from 'react-redux-toastr';
 import LoadingComponent from '../../helpers/LoadingComponent'
 import { oilCollectionSetUpQuery } from '../../firebase/queries/oilCollectionQueries';
+import OilCollectionSetUpDetailHeader from './oilCollectionSetUpDetailHeader'
 
   
   const mapState = (state, ownProps) => {
@@ -14,17 +15,14 @@ import { oilCollectionSetUpQuery } from '../../firebase/queries/oilCollectionQue
     let setupLocation = {};
     let locationId;
     let setupId = ownProps.match.params.id;
-    console.log(setupId);
   
     if (state.firestore.ordered.oilCollectionSetup && state.firestore.ordered.oilCollectionSetup[0]) {
       setup = state.firestore.ordered.oilCollectionSetup.filter(setup => setup.id === setupId)[0];
       locationId = setup.locationId;
-      console.log(locationId);
-
     }
-    //   if (setupId && state.firestore.ordered.setups.length > 0) {
-    //   setup = state.setups.filter(setup => setup.id === setupId)[0]
-    // }
+    if (state.firestore.ordered.locationDetails) {
+      setupLocation = state.firestore.ordered.locationDetails[0]
+    }
   
     return {
       requesting: state.firestore.status.requesting,
@@ -48,7 +46,7 @@ import { oilCollectionSetUpQuery } from '../../firebase/queries/oilCollectionQue
   
     async componentDidMount() {
       
-      const { firestore, match, locationId } = this.props;
+      const { firestore, match } = this.props;
       let setup = await firestore.get(`oilCollectionSetup/${match.params.id}`);
       if (!setup.exists) {
         toastr.error('Not found', 'This is not the location you are looking for')
@@ -60,16 +58,16 @@ import { oilCollectionSetUpQuery } from '../../firebase/queries/oilCollectionQue
         setup
       })
 
-      let setupLocation = await firestore.get(`locations/${locationId}`);
-      if (!setup.exists) {
-        toastr.error('Not found', 'This is not the location you are looking for')
-        this.props.history.push('/error')
-      }
-      await firestore.setListener(`locations/${locationId}`);
-      this.setState({
-        initialLoading: false,
-        setupLocation
-      })
+      // let setupLocation = await firestore.get(`locations/${locationId}`);
+      // if (!setupLocation.exists) {
+      //   toastr.error('Not found', 'This is not the location you are looking for')
+      //   this.props.history.push('/error')
+      // }
+      // await firestore.setListener(`locations/${locationId}`);
+      // this.setState({
+      //   initialLoading: false,
+      //   setupLocation
+      // })
     }  
   
     async componentWillUnmount() {
@@ -80,25 +78,19 @@ import { oilCollectionSetUpQuery } from '../../firebase/queries/oilCollectionQue
   
     render() {
       
-      const { match, requesting, setup, locationId} = this.props;
+      const { match, requesting, setup, locationId, setupLocation} = this.props;
       const loadingSetup = requesting[`oilCollectionSetup/${match.params.id}`]
       const loadingLocation = requesting[`locations/${locationId}`]
   
       if (loadingSetup || loadingLocation || this.state.initialLoading) return <LoadingComponent inverted={true}/>
-        console.log(setup);
+        console.log(setup, setupLocation);
       // if (loadingLocation || this.state.initialLoading) return <LoadingComponent inverted={true}/>
       //   console.log(setup);
   
       return (
         <Grid>
           <Grid.Column width={10}>
-          {/* <LocationDetailHeader location={location} />
-          <LocationDetailInfo location={location} />
-          <LocationDetailChat />
-          <LocationsPhotoPage location={location} />
-          </Grid.Column>
-          <Grid.Column width={6}>
-          <LocationDetailSidebar /> */}
+            <OilCollectionSetUpDetailHeader locationDetails={setupLocation}/>
         </Grid.Column>
         </Grid>
       );
@@ -108,6 +100,6 @@ import { oilCollectionSetUpQuery } from '../../firebase/queries/oilCollectionQue
   export default compose(
     connect(mapState, {}),
     withFirestore,
-    firestoreConnect((locationId) => oilCollectionSetUpQuery(locationId))
-    
+    firestoreConnect((locationId) => 
+    oilCollectionSetUpQuery(locationId))
   )(OilCollectionSetUpDetailPage)

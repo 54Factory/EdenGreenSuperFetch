@@ -8,6 +8,7 @@ import userReducer from './user';
 import asyncReducer from './async';
 import createReducer from './create/create'
 import locationsReducer from './locations'
+import locationServicesReducer from './locationServices'
 
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   async: asyncReducer,
   create: createReducer,
   locations: locationsReducer,
+  locationServices: locationServicesReducer,
   form: FormReducer,
   toastr: toastrReducer,
 });
