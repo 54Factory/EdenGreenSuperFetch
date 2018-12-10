@@ -69,7 +69,7 @@ class LocationDetailPage extends Component {
 
   render() {
     
-    const { match, requesting, location, } = this.props;
+    const { match, requesting, location, history } = this.props;
     const loadingLocation = requesting[`locations/${match.params.id}`]
 
     if (loadingLocation || this.state.initialLoading) return <LoadingComponent inverted={true}/>
@@ -77,7 +77,7 @@ class LocationDetailPage extends Component {
     return (
       <Grid>
         <Grid.Column width={10}>
-        <LocationDetailHeader location={location} />
+        <LocationDetailHeader location={location} history={history} />
         <LocationDetailInfo location={location} />
         <LocationDetailChat />
         <LocationsPhotoPage location={location} />

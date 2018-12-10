@@ -1,58 +1,38 @@
 import React from 'react';
-import { Segment, Image, Item, Header, Button } from 'semantic-ui-react';
+import { Segment, Item, Header, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
 import LocationDetailMap from '../locations/locationDetailMap';
+import OilCollectionSetUpForm from '../../crud/Forms/OilCollectionSetUpForm';
 
-const locationImageStyle = {
-    filter: 'brightness(30%)'
-};
-
-const locationImageTextStyle = {
-    position: 'absolute',
-    bottom: '5%',
-    left: '5%',
-    width: '100%',
-    height: 'auto',
-    color: 'white'
-};
-
-const OilCollectionSetUpDetailHeader = ({locationDetails}) => {
+const OilCollectionSetUpDetailHeader = ({locationDetails, history}) => {
   console.log(locationDetails);
   
   return (
     <Segment.Group>
-      <Segment basic attached="top" style={{ padding: '0' }}></Segment>
-        <LocationDetailMap  lat={locationDetails.locationLatLng.lat} lng={locationDetails.locationLatLng.lng}/>
-        {/* <Image src={location.locationPhotoURL} fluid style={locationImageStyle} /> */}
-        {/* <Image src={`/assets/categoryImages/${location.category}.jpg`} fluid style={locationImageStyle} /> */}
-
-        <Segment basic style={locationImageTextStyle}>
+      <Segment basic attached="top" style={{ padding: '0' }}>
+        <LocationDetailMap  lat={locationDetails.locationLatLng.lat} lng={locationDetails.locationLatLng.lng}/>    
+      </Segment>
+        <Segment basic>
         <Item.Group>
             <Item>
               <Item.Content>
                 <Header
-                  size="huge"
+                  size="large"
                   content={locationDetails.locationName}
-                  style={{ color: 'black' }}
+                  style={{ color: 'black', padding: '3px' }}
                 />
-                {/* <p>{location.date}</p> */}
-                <p>Next Pick Up Date:</p>
-                <p>
-                  Address: <strong></strong>
+                <p>Address: {locationDetails.address}</p>
+                <p>Containment: {locationDetails.oilCollectionContainerQuantity} - {
+                locationDetails.oilCollectionContainerQuantity <= 1 ? 
+                locationDetails.oilCollectionContainerType : `${locationDetails.oilCollectionContainerType}s` }
                 </p>
+                <OilCollectionSetUpForm setup={locationDetails}/>
               </Item.Content>
             </Item>
           </Item.Group>
-        
-      </Segment>
-
-      <Segment attached="bottom">
-        <Button>Cancel Something</Button>
-        <Button color="blue">Change Something</Button>
-
-        <Button as={Link} to={`/manage/`} color="green" floated="right">
-          Complete Set Up
-        </Button>
+        </Segment>
+        <Segment attached="bottom">
+      <Button onClick={history.goBack} type="button">Go Back</Button>
       </Segment>
     </Segment.Group>
   );

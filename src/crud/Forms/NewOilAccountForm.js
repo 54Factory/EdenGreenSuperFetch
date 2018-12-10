@@ -213,7 +213,7 @@ class NewOilAccountForm extends Component {
                 name="oilCollectionContainerQuantity"
                 component={SelectInput}
                 options={collectionContainerQuantityOptions}
-                placeholder="Container Type"
+                placeholder="Container Quantity"
               />
               <Field
                 name="oilCollectionSetUpDate"

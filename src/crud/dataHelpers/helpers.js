@@ -21,7 +21,7 @@ export const createDataTree = dataset => {
 // CREATE NEW CUSTOMER
 
 export const createNewLocation = (ownedById, oilCollectionServiceId, oilCollectionSetupServiceId, location, photoURL) => {
-  location.oilCollectionSetUpDate = null;
+  location.oilCollectionSetUpCompletedDate = null;
   console.log(location);
   return {
     ...location,

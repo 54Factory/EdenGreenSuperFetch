@@ -78,7 +78,7 @@ import OilCollectionSetUpDetailHeader from './oilCollectionSetUpDetailHeader'
   
     render() {
       
-      const { match, requesting, setup, locationId, setupLocation} = this.props;
+      const { match, history, requesting, setup, locationId, setupLocation} = this.props;
       const loadingSetup = requesting[`oilCollectionSetup/${match.params.id}`]
       const loadingLocation = requesting[`locations/${locationId}`]
   
@@ -90,7 +90,7 @@ import OilCollectionSetUpDetailHeader from './oilCollectionSetUpDetailHeader'
       return (
         <Grid>
           <Grid.Column width={10}>
-            <OilCollectionSetUpDetailHeader locationDetails={setupLocation}/>
+            <OilCollectionSetUpDetailHeader locationDetails={setupLocation} history={history}/>
         </Grid.Column>
         </Grid>
       );

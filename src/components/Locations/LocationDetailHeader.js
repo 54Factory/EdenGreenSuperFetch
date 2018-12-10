@@ -15,7 +15,7 @@ const locationImageTextStyle = {
     color: 'white'
 };
 
-const LocationDetailHeader = ({location}) => {
+const LocationDetailHeader = ({location, history}) => {
   return (
     <Segment.Group>
       <Segment basic attached="top" style={{ padding: '0' }}>
@@ -43,11 +43,12 @@ const LocationDetailHeader = ({location}) => {
       </Segment>
 
       <Segment attached="bottom">
-        <Button>Cancel Something</Button>
+
+        <Button onClick={history.goBack} type="button">Go Back</Button>
         <Button color="blue">Change Something</Button>
 
         <Button as={Link} to={`/manage/${location.id}`} color="orange" floated="right">
-          Manage Event
+          Manage Location
         </Button>
       </Segment>
     </Segment.Group>
